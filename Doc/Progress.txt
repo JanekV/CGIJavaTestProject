@@ -1,0 +1,10 @@
+DAY 1.
+1) Seadsin projekti malli üles IntelliJs ja GitHubi repo. Leidsin korraliku .gitignore'i.
+Esialgu veel lihtne.
+2) H2 andmebaas on täiesti uus asi niiet uurin kuidas see töötab projektis
+(https://www.baeldung.com/spring-boot-h2-database annab hea kiire ülevaate).
+3) Thymeleaf on ka täiesti uus ehk uurin ka seda. Tahan kenama vormi teha.
+4) Pärast veidi jamamist lisasin bootstrapi dependencyd.
+
+
+

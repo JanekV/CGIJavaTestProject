@@ -1,10 +1,12 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
 <body>
 <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
     <table>
         <tr>
             <td><p th:text="#{dentist.name}">dentist.name</p></td>
             <td><input type="text" th:field="*{dentistName}"/></td>
+            <!--<label th:each="id,status : ${idList}" th:for="|id${status.index}|" th:text="${id.id}"></label> :TODO select form-->
             <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">name.error</td>
         </tr>
         <tr>
@@ -20,4 +22,7 @@
     </table>
 </form>
 </body>
+<div lang="en" th:replace="fragments/footer :: footer"></div>
 </html>
+
+<!--Header&Footer&Bootstrap init things from https://stackoverflow.com/questions/49147216/spring-boot-thymeleaf-webjars-bootstrap-4-->
