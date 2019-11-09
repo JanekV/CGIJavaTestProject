@@ -2,6 +2,18 @@
 <head th:replace="fragments/header :: header"></head>
 <body>
 <p th:text="#{registration.ok}">registration.ok</p>
+<table>
+    <th>
+        Arst
+    </th>
+    <th>
+        Visiidi aeg
+    </th>
+    <tr th:each="dentistVisit: ${dentistVisits}">
+        <td th:text="${{dentistVisit.dentistName}}"/>
+        <td th:text="${{dentistVisit.visitTime}}" />
+    </tr>
+</table>
 </body>
 <div lang="en" th:replace="fragments/footer :: footer"></div>
 </html>

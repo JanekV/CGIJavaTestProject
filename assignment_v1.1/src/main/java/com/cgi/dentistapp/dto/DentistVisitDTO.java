@@ -9,11 +9,11 @@ import java.util.Date;
 public class DentistVisitDTO {
 
     @Size(min = 1, max = 50)
-    String dentistName;
+    private String dentistName;
 
     @NotNull
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
-    Date visitTime;
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private Date visitTime;
 
     public DentistVisitDTO() {
     }

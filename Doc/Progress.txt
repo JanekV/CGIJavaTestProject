@@ -6,5 +6,11 @@ Esialgu veel lihtne.
 3) Thymeleaf on ka täiesti uus ehk uurin ka seda. Tahan kenama vormi teha.
 4) Pärast veidi jamamist lisasin bootstrapi dependencyd.
 
-
+DAY 2.
+1) Alustuseks lõin GitHubis milestone'id ja issue'd, et paremini jälgida mida teha vaja,
+mis tehtud jne.
+2) Tegin backendi registreerimise funktsionaalsuse, lisasin selle käigus Data Access Layeri,
+kuhu tegin repository ja mapperi. Kuna praegu käivas aines (Veebirakendused Java baasil) teeme
+oma projektides sarnaseid asju, siis saan sealt spikerdada, mis puutub Springi ja Hibernatei JPAd.
+3) Lisasin basic funktsionaalsuse visiitide listi kuvamiseks.
 

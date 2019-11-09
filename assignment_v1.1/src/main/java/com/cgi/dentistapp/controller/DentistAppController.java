@@ -5,6 +5,7 @@ import com.cgi.dentistapp.service.DentistVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
@@ -35,8 +37,13 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         if (bindingResult.hasErrors()) {
             return "form";
         }
-
-        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitTime());
+        dentistVisitService.addVisit(dentistVisitDTO);
         return "redirect:/results";
+    }
+
+    @GetMapping("/results")
+    public String showList(Model model) {
+        model.addAttribute("dentistVisits", dentistVisitService.getAll());
+        return "results";
     }
 }
