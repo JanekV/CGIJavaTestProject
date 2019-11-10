@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @EnableAutoConfiguration
@@ -28,7 +27,8 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/")
-    public String showRegisterForm(DentistVisitDTO dentistVisitDTO) {
+    public String showRegisterForm(DentistVisitDTO dentistVisitDTO, Model model) {
+        model.addAttribute("dentists", dentistVisitService.getAllDentists());
         return "form";
     }
 

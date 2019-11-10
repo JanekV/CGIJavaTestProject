@@ -2,24 +2,18 @@
 <head th:replace="fragments/header :: header"></head>
 <body>
 <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
-    <table>
-        <tr>
-            <td><p th:text="#{dentist.name}">dentist.name</p></td>
-            <td><input type="text" th:field="*{dentistName}"/></td>
-            <!--<label th:each="id,status : ${idList}" th:for="|id${status.index}|" th:text="${id.id}"></label> :TODO select form-->
-            <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">name.error</td>
-        </tr>
-        <tr>
-            <td><p th:text="#{visit.date}">visit.date</p></td>
-            <td><input type="text" th:field="*{visitTime}"/></td>
-            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">date.error</td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit" th:text="#{register.visit}"></button>
-            </td>
-        </tr>
-    </table>
+    <div class="form-group">
+        <label th:text="#{dentist.name}">dentist.name</label>
+        <select th:each="dentist: ${dentists}" class="form-control">
+            <option th:text="${{dentist.getName}}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:text="#{visit.date}">visit.date</label>
+        <input type="text" th:field="*{visitTime}" class="form-control"/>
+        <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">date.error</td>
+    </div>
+        <button type="submit" th:text="#{register.visit}" class="btn btn-primary"></button>
 </form>
 </body>
 <div lang="en" th:replace="fragments/footer :: footer"></div>

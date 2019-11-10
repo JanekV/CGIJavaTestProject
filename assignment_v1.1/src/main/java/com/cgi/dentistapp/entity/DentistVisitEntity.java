@@ -1,52 +1,41 @@
 package com.cgi.dentistapp.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 @Table(name = "dentist_visit")
+@Data
+@NoArgsConstructor
 public class DentistVisitEntity {
-
-    public DentistVisitEntity() {
-    }
-
-    public DentistVisitEntity(String dentistName, Date visitTime) {
-        this.dentistName = dentistName;
-        this.visitTime = visitTime;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "dentist_visit_id")
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
+    @Valid
+    @ManyToOne
+    @JoinColumn(name = "dentist_id", nullable = false)
+    private DentistEntity dentist;
 
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "dentist_name")
-    private String dentistName;
+    @Valid
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    private PersonEntity person;
 
     @NotNull
     @Column(name = "visit_time")
     private Date visitTime;
 
-    public String getDentistName() {
-        return dentistName;
-    }
-
-    public void setDentistName(String dentistName) {
-        this.dentistName = dentistName;
-    }
-
-    public Date getVisitTime() {
-        return visitTime;
-    }
-
-    public void setVisitTime(Date visitTime) {
+    public DentistVisitEntity(DentistEntity dentist, PersonEntity person, Date visitTime) {
+        this.dentist = dentist;
+        this.person = person;
         this.visitTime = visitTime;
     }
 }

@@ -14,3 +14,6 @@ kuhu tegin repository ja mapperi. Kuna praegu käivas aines (Veebirakendused Jav
 oma projektides sarnaseid asju, siis saan sealt spikerdada, mis puutub Springi ja Hibernatei JPAd.
 3) Lisasin basic funktsionaalsuse visiitide listi kuvamiseks.
 
+DAY 3.
+1) Lisasin DentistEntity ja PersonEntity, vastavalt arstile ja patsiendile. Oleks võimalik neid ka kokku
+ühte tabelisse panna, aga lihtsuse eesmärgil ei hakanud seda tegema.
