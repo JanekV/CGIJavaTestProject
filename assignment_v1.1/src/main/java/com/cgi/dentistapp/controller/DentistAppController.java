@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -35,6 +36,8 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
+        registry.addViewController("/form").setViewName("form");
+        registry.addViewController("/details").setViewName("detalis");
     }
 
     @GetMapping("/")
@@ -57,5 +60,11 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     public String showList(Model model) {
         model.addAttribute("dentistVisits", dentistVisitService.getAll());
         return "results";
+    }
+
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable Long id, Model model) {
+        model.addAttribute("dentistVisit", dentistVisitService.findById(id));
+        return "details";
     }
 }

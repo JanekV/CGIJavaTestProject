@@ -1,19 +1,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"></head>
 <body>
-    <p th:text="#{registration.ok}" class="text-success">registration.ok</p>
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <th scope="col">dentist.name</th>
-            <th scope="col">visit.date</th>
-        </thead>
-        <tbody>
-            <tr th:each="dentistVisit: ${dentistVisits}">
-                <td th:text="${{dentistVisit.dentistName}}"/>
-                <td th:text="${#dates.format({dentistVisit.visitTime}, 'dd MMMM yyyy')}"/>
-            </tr>
-        </tbody>
-    </table>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <div class="row">
+            <p th:text="#{registration.ok}" class="text-success">registration.ok</p>
+            <table class="table table-hover">
+               <thead class="thead-dark">
+                  <th scope="col">dentist.name</th>
+                  <th scope="col">visit.date</th>
+               </thead>
+               <tbody>
+               <tr th:each="dentistVisit: ${dentistVisits}">
+                    <td th:text="${{dentistVisit.dentistName}}"/>
+                    <td th:text="${#dates.format({dentistVisit.visitTime}, 'dd MMMM yyyy')}"/>
+               </tr>
+                </tbody>
+            </table>
+        </div>
+        <div lang="en" th:replace="fragments/footer :: footer">&copy; Janek Valgma 2019</div>
+    </div>
 </body>
-<div lang="en" th:replace="fragments/footer :: footer"></div>
 </html>

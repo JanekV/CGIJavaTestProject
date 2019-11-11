@@ -1,37 +1,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"></head>
 <body>
-<form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
-    <div class="form-group">
-        <label th:text="#{person.firstName}">person.firstName</label>
-        <input type="text" th:field="*{personFirstName}" class="form-control"/>
-        <small th:if="${#fields.hasErrors('personFirstName')}" th:errors="*{personFirstName}" class="text-danger">name.error</small>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <div class="row">
+            <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
+                <div class="form-group">
+                    <label th:text="#{person.firstName}">person.firstName</label>
+                    <input type="text" th:field="*{personFirstName}" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('personFirstName')}" th:errors="*{personFirstName}" class="text-danger">name.error</small>
+                </div>
+                <div class="form-group">
+                    <label th:text="#{person.lastName}">person.lastname</label>
+                    <input type="text" th:field="*{personLastName}" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('personLastName')}" th:errors="*{personLastName}" class="text-danger">name.error</small>
+              </div>
+               <div class="form-group">
+                   <label th:text="#{person.personalCode}">person.personalCode</label>
+                   <input type="text" th:field="*{personPersonalCode}" class="form-control"/>
+                   <small th:if="${#fields.hasErrors('personPersonalCode')}" th:errors="*{personPersonalCode}" class="text-danger">personalCode.error</small>
+               </div>
+               <div class="form-group">
+                   <label th:text="#{dentist.name}">dentist.name</label>
+                   <select th:field="*{dentistId}" class="form-control">
+                      <option th:each="dentist: ${dentists}" th:value="${dentist.Id}" th:text="${{dentist.getName()}}"></option>
+                   </select>
+               </div>
+                <div class="form-group">
+                    <label th:text="#{visit.date}">visit.date</label>
+                    <input type="date" th:field="*{visitTime}" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}" class="text-danger">date.error</small>
+                </div>
+                <button type="submit" th:text="#{register.visit}" class="btn btn-primary"></button>
+            </form>
+        </div>
+        <div lang="en" th:replace="fragments/footer :: footer">&copy; Janek Valgma 2019</div>
     </div>
-    <div class="form-group">
-        <label th:text="#{person.lastName}">person.lastname</label>
-        <input type="text" th:field="*{personLastName}" class="form-control"/>
-        <small th:if="${#fields.hasErrors('personLastName')}" th:errors="*{personLastName}" class="text-danger">name.error</small>
-    </div>
-    <div class="form-group">
-        <label th:text="#{person.personalCode}">person.personalCode</label>
-        <input type="text" th:field="*{personPersonalCode}" class="form-control"/>
-        <small th:if="${#fields.hasErrors('personPersonalCode')}" th:errors="*{personPersonalCode}" class="text-danger">personalCode.error</small>
-    </div>
-    <div class="form-group">
-        <label th:text="#{dentist.name}">dentist.name</label>
-        <select th:field="*{dentistId}" class="form-control">
-            <option th:each="dentist: ${dentists}" th:value="${dentist.Id}" th:text="${{dentist.getName()}}"></option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label th:text="#{visit.date}">visit.date</label>
-        <input type="date" th:field="*{visitTime}" class="form-control"/>
-        <small th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}" class="text-danger">date.error</small>
-    </div>
-        <button type="submit" th:text="#{register.visit}" class="btn btn-primary"></button>
-</form>
 </body>
-<div lang="en" th:replace="fragments/footer :: footer"></div>
 </html>
 
 <!--Header&Footer&Bootstrap init things from https://stackoverflow.com/questions/49147216/spring-boot-thymeleaf-webjars-bootstrap-4-->

@@ -38,4 +38,9 @@ public class DentistVisitService {
     public List<DentistEntity> getAllDentists() {
         return dentistRepository.getAll();
     }
+
+    public DentistVisitDTO findById(Long id) {
+        return DentistVisitMapper.MapToDTO(
+                dentistVisitRepository.findById(id));
+    }
 }
