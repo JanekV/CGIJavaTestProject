@@ -1,8 +1,4 @@
-DROP TABLE IF EXISTS test;
-
-CREATE TABLE test (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  some_field VARCHAR2(50) NOT NULL
-);
-
-INSERT INTO test (some_field) VALUES ( 'Lorem Ipsum' );
+INSERT INTO dentist ( first_name, last_name ) VALUES
+                                                     ( 'Mart', 'Tamm' ),
+                                                     ( 'Kati', 'Kuusk'),
+                                                     ( 'Sam', 'Ree');

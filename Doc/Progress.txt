@@ -17,3 +17,9 @@ oma projektides sarnaseid asju, siis saan sealt spikerdada, mis puutub Springi j
 DAY 3.
 1) Lisasin DentistEntity ja PersonEntity, vastavalt arstile ja patsiendile. Oleks võimalik neid ka kokku
 ühte tabelisse panna, aga lihtsuse eesmärgil ei hakanud seda tegema.
+2) Veel lisasin Lomboki projektile, et saaksin getterid/setterid/constructorid eest ära ja nii puhtama koodi.
+3) Sain andmebaasi uute olemitega tööle ja lisasin arstide valimiseks select elemendi.
+
+DAY 4.
+1) Sain tööle normaalsema visiidikuupäeva valimise registreerimise vormis.
+2) Alustasin ka nimekirja vaate kujundamist bootstrapiga.

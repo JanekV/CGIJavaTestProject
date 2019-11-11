@@ -20,12 +20,12 @@ public class DentistVisitEntity {
     private Long id;
 
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dentist_id", nullable = false)
     private DentistEntity dentist;
 
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id", nullable = false)
     private PersonEntity person;
 

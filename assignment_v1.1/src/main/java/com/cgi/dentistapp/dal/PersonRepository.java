@@ -1,6 +1,6 @@
 package com.cgi.dentistapp.dal;
 
-import com.cgi.dentistapp.entity.DentistVisitEntity;
+import com.cgi.dentistapp.entity.PersonEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,39 +9,35 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class DentistVisitRepository {
-
+public class PersonRepository {
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
-    public DentistVisitEntity addVisit(DentistVisitEntity entity) {
+    public PersonEntity add(PersonEntity entity) {
         if (entity.getId() == null) {
-            em.persist(entity.getDentist());
-            em.flush();
-            em.persist(entity.getPerson());
-            em.flush();
             em.persist(entity);
         } else {
             em.merge(entity);
         }
         return entity;
     }
+
     @Transactional
-    public List<DentistVisitEntity> getAll() {
+    public List<PersonEntity> getAll() {
         return em.createQuery(
-                "SELECT dv FROM DentistVisitEntity dv",
-                DentistVisitEntity.class).getResultList();
+                "SELECT d FROM PersonEntity d",
+                PersonEntity.class).getResultList();
     }
 
     @Transactional
-    public DentistVisitEntity findById(Long id) {
-        return em.find(DentistVisitEntity.class, id);
+    public PersonEntity findById(Long id) {
+        return em.find(PersonEntity.class, id);
     }
 
     @Transactional
     public void delete(Long id) {
-        DentistVisitEntity e = findById(id);
+        PersonEntity e = findById(id);
         if (e != null) {
             em.remove(e);
         }
