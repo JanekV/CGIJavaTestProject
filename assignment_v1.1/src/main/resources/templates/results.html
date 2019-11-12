@@ -7,8 +7,8 @@
             <p th:text="#{registration.ok}" class="text-success">registration.ok</p>
             <table class="table table-hover">
                <thead class="thead-dark">
-                  <th scope="col">dentist.name</th>
-                  <th scope="col">visit.date</th>
+                  <th scope="col" th:text="#{dentist.name}">dentist.name</th>
+                  <th scope="col" th:text="#{visit.date}">visit.date</th>
                </thead>
                <tbody>
                <tr th:each="dentistVisit: ${dentistVisits}">
