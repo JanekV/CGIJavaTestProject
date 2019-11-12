@@ -27,11 +27,11 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @Autowired
     private DentistVisitService dentistVisitService;
 
-    @InitBinder
+    /*@InitBinder
     public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(Date.class,
                 new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
-    }
+    }*/
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -49,6 +49,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @PostMapping("/")
     public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getAllErrors());
             model.addAttribute("dentists", dentistVisitService.getAllDentists());
             return "form";
         }

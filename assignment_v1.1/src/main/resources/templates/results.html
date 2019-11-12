@@ -13,7 +13,7 @@
                <tbody>
                <tr th:each="dentistVisit: ${dentistVisits}">
                     <td th:text="${{dentistVisit.dentistName}}"/>
-                    <td th:text="${#dates.format({dentistVisit.visitTime}, 'dd MMMM yyyy')}"/>
+                    <td th:text="${#dates.format({dentistVisit.visitDate}, 'dd MMMM yyyy')}"/>
                </tr>
                 </tbody>
             </table>

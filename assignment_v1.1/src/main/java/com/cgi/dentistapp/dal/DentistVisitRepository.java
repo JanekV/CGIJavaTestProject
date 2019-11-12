@@ -34,6 +34,7 @@ public class DentistVisitRepository {
                 DentistVisitEntity.class).getResultList();
     }
 
+
     @Transactional
     public DentistVisitEntity findById(Long id) {
         return em.find(DentistVisitEntity.class, id);

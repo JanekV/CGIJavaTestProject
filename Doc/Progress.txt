@@ -23,3 +23,9 @@ DAY 3.
 DAY 4.
 1) Sain tööle normaalsema visiidikuupäeva valimise registreerimise vormis.
 2) Alustasin ka nimekirja vaate kujundamist bootstrapiga.
+
+DAY 5.
+1) Sain bootstrapi korda - olin vale versiooni pannud.
+2) Lisasin kellaaja valimise vormi. Üritasin saada tööle 24h süsteemi kuidagi, aga andsin alla sellega.
+On tunda, et frontend ja just kuidas andmed sinna jõuavad/neid kuvada on osutunud kõige raskemaks/aeganõudvamaks, kuna
+Thymeleaf on üpris võõras.

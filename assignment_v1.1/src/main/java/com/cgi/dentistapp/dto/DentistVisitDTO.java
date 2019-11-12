@@ -36,5 +36,10 @@ public class DentistVisitDTO {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    private Date visitDate;
+
+    @NotNull
+    @DateTimeFormat(pattern = "HH:mm")
+    @Temporal(TemporalType.TIME)
     private Date visitTime;
 }

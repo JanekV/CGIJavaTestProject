@@ -30,12 +30,17 @@ public class DentistVisitEntity {
     private PersonEntity person;
 
     @NotNull
+    @Column(name = "visit_date")
+    private Date visitDate;
+    
+    @NotNull
     @Column(name = "visit_time")
     private Date visitTime;
 
-    public DentistVisitEntity(DentistEntity dentist, PersonEntity person, Date visitTime) {
+    public DentistVisitEntity(DentistEntity dentist, PersonEntity person, Date visitDate, Date visitTime) {
         this.dentist = dentist;
         this.person = person;
         this.visitTime = visitTime;
+        this.visitDate = visitDate;
     }
 }

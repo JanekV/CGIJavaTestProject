@@ -1,7 +1,7 @@
 package com.cgi.dentistapp.service;
 
 import com.cgi.dentistapp.dal.DentistRepository;
-import com.cgi.dentistapp.dal.DentistVisitMapper;
+import com.cgi.dentistapp.dal.mappers.DentistVisitMapper;
 import com.cgi.dentistapp.dal.DentistVisitRepository;
 import com.cgi.dentistapp.dto.DentistVisitDTO;
 import com.cgi.dentistapp.entity.DentistEntity;
