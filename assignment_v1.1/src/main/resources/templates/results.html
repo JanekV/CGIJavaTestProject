@@ -4,21 +4,33 @@
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <div class="row">
-            <p th:text="#{registration.ok}" class="text-success">registration.ok</p>
+            <p th:if="${message}" th:text="#{registration.ok}" class="text-success">registration.ok</p>
             <table class="table table-hover">
                <thead class="thead-dark">
                   <th scope="col" th:text="#{dentist.name}">dentist.name</th>
                   <th scope="col" th:text="#{visit.date}">visit.date</th>
+                  <th scope="col" th:text="#{visit.time}">visit.time</th>
+                  <th scope="col" th:text="#{patient.name}">patient.name</th>
+                  <th scope="col"></th>
                </thead>
                <tbody>
                <tr th:each="dentistVisit: ${dentistVisits}">
-                    <td th:text="${{dentistVisit.dentistName}}"/>
-                    <td th:text="${#dates.format({dentistVisit.visitDate}, 'dd MMMM yyyy')}"/>
+                   <td th:text="${{dentistVisit.dentistName}}"/>
+                   <td th:text="${#dates.format({dentistVisit.visitDate}, 'dd MMMM yyyy')}"/>
+                   <td th:text="${#dates.format({dentistVisit.visitTime}, 'HH:mm')}"/>
+                   <td th:text="${dentistVisit.personFullName}"/>
+                   <td>
+                       <div class="active" role="group">
+                           <a th:href="@{'/details/' + ${{dentistVisit.dentistId}}}" th:text="#{details}">Details</a> |
+                           <a th:href="@{'/edit/' + ${{dentistVisit.dentistId}}}" th:text="#{edit}">Edit</a> |
+                           <a th:href="@{'/delete/' + ${{dentistVisit.dentistId}}}" th:text="#{delete}" class="text-danger">Delete</a>
+                       </div>
+                   </td>
                </tr>
                 </tbody>
             </table>
         </div>
-        <div lang="en" th:replace="fragments/footer :: footer">&copy; Janek Valgma 2019</div>
     </div>
+    <div lang="en" th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

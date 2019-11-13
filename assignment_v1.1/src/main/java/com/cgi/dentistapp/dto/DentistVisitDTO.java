@@ -20,6 +20,7 @@ public class DentistVisitDTO {
     private Long dentistId;
 
     private String dentistName;
+    private String personFullName;
 
     @NotNull
     @Size(min = 1, max = 50)
