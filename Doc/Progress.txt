@@ -41,4 +41,9 @@ DAY 7. (final stretch)
 1) Pikalt jamasin CRUD meetoditega, kõikjal objekte kasutades läheb vahest meelest et html töötab siiski puhtalt
 teksti - võti/väärtus paaridega. Aga vaadates vanu projekte tuli meelde mida teha tuli.
 2) Sain ka otsingu tööle, keeruliseks osutus query parameetrite lisamine thymeleafiga alguses. Otsida saab ainult
-täielike vasteid.
+täielike vasteid. Natuke Java EE 6 dokumentatsioonis (https://docs.oracle.com/javaee/6/tutorial/doc/bnbuf.html#bnbvg)
+ringi kolades leidsin kudas saab ka osalisi vasteid leida. Nüüd saab otsida ka osalisi vasteid ja tähesuurusest sõltumatult.
+3) Arvatavasti see on kõik funktsionaalsus, mis ma teen, katsin ära suuremosa tingimusi. Kellaaegade valideerimine tundub
+liiga keeruline just andmebaasi ja thymeleafi koha pealt. Teeksin seda muidu nii, et lisaksin igale ajale 30 minutit
+või kui iganes kaua ma otsustan, et arstivastuvõtt kestab ja siis lihtsalt uusi aega postitades kontrolliksin kas uus aeg
+läheb kuhugi olemasolevate vahemike sisse ja kui läheb siis ei luba esitada.
