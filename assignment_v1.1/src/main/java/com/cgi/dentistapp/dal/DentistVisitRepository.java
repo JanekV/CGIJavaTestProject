@@ -5,9 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@SuppressWarnings("JpaQlInspection")
 @Repository
 public class DentistVisitRepository {
 
@@ -17,12 +20,12 @@ public class DentistVisitRepository {
     @Transactional
     public DentistVisitEntity addVisit(DentistVisitEntity entity) {
         if (entity.getId() == null) {
-            em.persist(entity.getDentist());
-            em.flush();
             em.persist(entity.getPerson());
             em.flush();
             em.persist(entity);
         } else {
+            em.merge(entity.getPerson());
+            em.flush();
             em.merge(entity);
         }
         return entity;
@@ -44,7 +47,22 @@ public class DentistVisitRepository {
     public void delete(Long id) {
         DentistVisitEntity e = findById(id);
         if (e != null) {
-            em.remove(e);
+            Query q = em.createQuery("delete from DentistVisitEntity dve where dve.id = :id");
+            q.setParameter("id", id);
+            q.executeUpdate();
         }
+    }
+
+    public List<DentistVisitEntity> search(String search) {
+        TypedQuery<DentistVisitEntity> query = em.createQuery(
+                "SELECT dve from DentistVisitEntity dve " +
+                        "where" +
+                        " LOWER( dve.dentist.firstName ) like :search or lower( dve.dentist.lastName ) like :search or" +
+                        " LOWER( dve.person.firstName ) like :search or LOWER( dve.person.lastName ) like :search or" +
+                        " LOWER( dve.person.personalCode ) like :search",
+                DentistVisitEntity.class
+        );
+        query.setParameter("search", "%" + search.toLowerCase() + "%");
+        return query.getResultList();
     }
 }

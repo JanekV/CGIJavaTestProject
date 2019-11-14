@@ -19,7 +19,7 @@ public class DentistEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dentist_id")
-    private Long Id;
+    private Long id;
 
     @NotNull
     @Size(min = 1, max = 50)

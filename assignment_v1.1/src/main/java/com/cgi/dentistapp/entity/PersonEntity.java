@@ -19,7 +19,7 @@ public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "person_id")
-    private Long Id;
+    private Long id;
 
     @NotNull
     @Size(min = 1, max = 50)
@@ -39,7 +39,8 @@ public class PersonEntity {
     @OneToMany(mappedBy = "person")
     private List<DentistVisitEntity> visits;
 
-    public PersonEntity(String personFirstName, String personLastName, String personPersonalCode) {
+    public PersonEntity(Long id, String personFirstName, String personLastName, String personPersonalCode) {
+        this.id = id;
         this.firstName = personFirstName;
         this.lastName = personLastName;
         this.personalCode = personPersonalCode;

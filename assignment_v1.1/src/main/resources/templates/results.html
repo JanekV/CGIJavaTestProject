@@ -21,9 +21,9 @@
                    <td th:text="${dentistVisit.personFullName}"/>
                    <td>
                        <div class="active" role="group">
-                           <a th:href="@{'/details/' + ${{dentistVisit.dentistId}}}" th:text="#{details}">Details</a> |
-                           <a th:href="@{'/edit/' + ${{dentistVisit.dentistId}}}" th:text="#{edit}">Edit</a> |
-                           <a th:href="@{'/delete/' + ${{dentistVisit.dentistId}}}" th:text="#{delete}" class="text-danger">Delete</a>
+                           <a th:href="@{'/details/' + ${{dentistVisit.id}}}" th:text="#{details}">Details</a> |
+                           <a th:href="@{'/edit/' + ${{dentistVisit.id}}}" th:text="#{edit}">Edit</a> |
+                           <a th:href="@{'/delete/' + ${{dentistVisit.id}}}" th:text="#{delete}" class="text-danger">Delete</a>
                        </div>
                    </td>
                </tr>

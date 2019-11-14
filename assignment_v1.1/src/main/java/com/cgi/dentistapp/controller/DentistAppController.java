@@ -2,13 +2,10 @@ package com.cgi.dentistapp.controller;
 
 import com.cgi.dentistapp.dto.DentistVisitDTO;
 import com.cgi.dentistapp.service.DentistVisitService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,8 +17,11 @@ import javax.validation.Valid;
 @EnableAutoConfiguration
 public class DentistAppController extends WebMvcConfigurerAdapter {
 
-    @Autowired
-    private DentistVisitService dentistVisitService;
+    private final DentistVisitService dentistVisitService;
+
+    public DentistAppController(DentistVisitService dentistVisitService) {
+        this.dentistVisitService = dentistVisitService;
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -40,7 +40,6 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO,
                                    BindingResult bindingResult, Model model, RedirectAttributes ra) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult.getAllErrors());
             model.addAttribute("dentists", dentistVisitService.getAllDentists());
             return "form";
         }
@@ -51,29 +50,38 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
     @GetMapping("/results")
     public String showList(Model model) {
+        model.addAttribute("Results", "True");
         model.addAttribute("dentistVisits", dentistVisitService.getAll());
+        return "results";
+    }
+
+    @GetMapping("/results/search")
+    public String search(@RequestParam(defaultValue = "") String key, Model model) {
+        model.addAttribute("Results", "True");
+        System.out.println("key: " + key);
+        model.addAttribute("dentistVisits", dentistVisitService.search(key));
         return "results";
     }
 
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable Long id, Model model) {
-        System.out.println(id);
-        System.out.println(dentistVisitService.findById(id));
         model.addAttribute("dentistVisit", dentistVisitService.findById(id));
         return "details";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        System.out.println(id);
-        System.out.println("in delete");
-        return "In delete!" + id;
+    public String delete(@PathVariable Long id, Model model) {
+        dentistVisitService.delete(id);
+        return showList(model);
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id) {
-        System.out.println(id);
-        System.out.println("in edit");
-        return "In delete!" + id;
+    public String edit(@PathVariable Long id, Model model) {
+        model.addAttribute("dentists", dentistVisitService.getAllDentists());
+        if (id != null) {
+            model.addAttribute("dentistVisitDTO", dentistVisitService.findById(id));
+            model.addAttribute("Edit", "True");
+        }
+        return "form";
     }
 }

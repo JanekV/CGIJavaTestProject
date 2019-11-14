@@ -36,3 +36,9 @@ salvestamist convertida. Tegelen hiljem kui aega jätkub, pole väga kriitiline 
 2) Nüüd kuvab nimekirja vaade piisavalt andmeid. Töötab see, et ma mapperis panen juba eesnimed perenimed kokku,
 lihtsam frontendis nii.
 3) Lisasin detailide vaate ja nupud "detailid, muuda, kustuta" nimekirjavaatesse.
+
+DAY 7. (final stretch)
+1) Pikalt jamasin CRUD meetoditega, kõikjal objekte kasutades läheb vahest meelest et html töötab siiski puhtalt
+teksti - võti/väärtus paaridega. Aga vaadates vanu projekte tuli meelde mida teha tuli.
+2) Sain ka otsingu tööle, keeruliseks osutus query parameetrite lisamine thymeleafiga alguses. Otsida saab ainult
+täielike vasteid.

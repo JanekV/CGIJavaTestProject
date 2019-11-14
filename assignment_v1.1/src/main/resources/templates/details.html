@@ -4,34 +4,32 @@
 <header th:replace="fragments/navbar :: navbar"></header>
     <div class="container">
         <h3 th:text="#{details}" class="text-sm-center"></h3>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{dentist.name}">dentist.name</div>
-            <div class="col-4" th:text="${dentistVisit.dentistName}"></div>
+        <div class="row">
+            <div class="col-sm-2" th:text="#{dentist.name}">dentist.name</div>
+            <div class="col-sm-10" th:text="${dentistVisit.dentistName}"></div>
         </div>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{person.firstName}"></div>
-            <div class="col-4" th:text="${dentistVisit.personFirstName}"></div>
+        <div class="row">
+            <div class="col-sm-2" th:text="#{patient.name}"></div>
+            <div class="col-sm-10" th:text="${dentistVisit.personFullName}"></div>
         </div>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{person.lastName}"></div>
-            <div class="col-4" th:text="${dentistVisit.personLastName}"></div>
+        <div class="row">
+            <div class="col-sm-2" th:text="#{person.personalCode}"></div>
+            <div class="col-sm-10" th:text="${dentistVisit.personPersonalCode}"></div>
         </div>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{person.personalCode}"></div>
-            <div class="col-4" th:text="${dentistVisit.personPersonalCode}"></div>
+        <div class="row">
+            <div class="col-sm-2" th:text="#{visit.date}"></div>
+            <div class="col-sm-10" th:text="${#dates.format(dentistVisit.visitDate, 'dd MMMM yyyy')}"></div>
         </div>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{visit.date}"></div>
-            <div class="col-4" th:text="${dentistVisit.visitDate}"></div>
+        <div class="row">
+            <div class="col-sm-2" th:text="#{visit.time}"></div>
+            <div class="col-sm-10" th:text="${#dates.format(dentistVisit.visitTime, 'HH:mm')}"></div>
         </div>
-        <div class="flex-md-row">
-            <div class="col-4" th:text="#{visit.time}"></div>
-            <div class="col-4" th:text="${dentistVisit.visitTime}"></div>
-        </div>
-        <div class="flex-md-row">
-            <a th:href="@{'/edit/' + ${dentistVisit.dentistId}}" th:text="#{edit}">Edit</a>
-            <a th:href="@{'/delete/' + ${dentistVisit.dentistId}}" th:text="#{delete}" class="text-danger">Delete</a>
-            <a th:href="@{/results}" th:text="#{back.to.list}">Back to list</a>
+        <div class="row">
+            <div class="col-md-4">
+                <a th:href="@{'/edit/' + ${dentistVisit.id}}" th:text="#{edit}">Edit</a> |
+                <a th:href="@{'/delete/' + ${dentistVisit.id}}" th:text="#{delete}" class="text-danger">Delete</a> |
+                <a th:href="@{/results}" th:text="#{back.to.list}">Back to list</a>
+            </div>
         </div>
     </div>
 <div lang="en" th:replace="fragments/footer :: footer"></div>

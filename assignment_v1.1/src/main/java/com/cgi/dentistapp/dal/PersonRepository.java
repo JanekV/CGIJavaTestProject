@@ -32,7 +32,10 @@ public class PersonRepository {
 
     @Transactional
     public PersonEntity findById(Long id) {
-        return em.find(PersonEntity.class, id);
+        if (id != null) {
+            return em.find(PersonEntity.class, id);
+        }
+        return null;
     }
 
     @Transactional

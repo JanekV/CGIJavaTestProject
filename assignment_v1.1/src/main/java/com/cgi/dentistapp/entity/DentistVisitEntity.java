@@ -37,10 +37,12 @@ public class DentistVisitEntity {
     @Column(name = "visit_time")
     private Date visitTime;
 
-    public DentistVisitEntity(DentistEntity dentist, PersonEntity person, Date visitDate, Date visitTime) {
+    public DentistVisitEntity(Long id, DentistEntity dentist, PersonEntity person, Date visitDate, Date visitTime) {
+        this.id = id;
         this.dentist = dentist;
         this.person = person;
         this.visitTime = visitTime;
         this.visitDate = visitDate;
     }
+
 }

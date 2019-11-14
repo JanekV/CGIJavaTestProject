@@ -14,6 +14,10 @@
                     <a class="nav-link" th:href="@{/results}" th:text="#{list.view}">List view</a>
                 </li>
             </ul>
+            <form th:if="${Results}" th:action="@{/results/search(key=${key})}" method="get" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" th:name="key" type="text" th:placeholder="#{search}" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" th:text="#{search}" type="submit"></button>
+            </form>
         </div>
     </nav>
 </header>

@@ -16,8 +16,11 @@ import java.util.Date;
 @AllArgsConstructor
 public class DentistVisitDTO {
 
+    private Long id;
+
     @NotNull
     private Long dentistId;
+    private Long personId;
 
     private String dentistName;
     private String personFullName;
