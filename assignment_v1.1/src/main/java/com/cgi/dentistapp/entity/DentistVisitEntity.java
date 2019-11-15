@@ -1,5 +1,6 @@
 package com.cgi.dentistapp.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @Table(name = "dentist_visit")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class DentistVisitEntity {
 
     @Id
@@ -36,13 +38,5 @@ public class DentistVisitEntity {
     @NotNull
     @Column(name = "visit_time")
     private Date visitTime;
-
-    public DentistVisitEntity(Long id, DentistEntity dentist, PersonEntity person, Date visitDate, Date visitTime) {
-        this.id = id;
-        this.dentist = dentist;
-        this.person = person;
-        this.visitTime = visitTime;
-        this.visitDate = visitDate;
-    }
 
 }

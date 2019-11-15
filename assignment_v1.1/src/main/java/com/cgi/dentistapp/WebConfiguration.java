@@ -16,6 +16,7 @@ public class WebConfiguration {
         return registrationBean;
     }
 
+    //Globally configure time formats.
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
         return builder -> {

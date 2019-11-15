@@ -19,11 +19,11 @@ public class DentistVisitRepository {
 
     @Transactional
     public DentistVisitEntity addVisit(DentistVisitEntity entity) {
-        if (entity.getId() == null) {
+        if (entity.getId() == null) { // If entity isn't already in the database -> add
             em.persist(entity.getPerson());
             em.flush();
             em.persist(entity);
-        } else {
+        } else {                     // If entity is in the database -> update
             em.merge(entity.getPerson());
             em.flush();
             em.merge(entity);
@@ -43,6 +43,10 @@ public class DentistVisitRepository {
         return em.find(DentistVisitEntity.class, id);
     }
 
+    /*
+    * Need to use custom querystring because by default (em.remove(entity)) there will be NullPointers.
+    * Last of which are caused by update and insert queries that are generated for entities where the id is already null.
+    */
     @Transactional
     public void delete(Long id) {
         DentistVisitEntity e = findById(id);
@@ -52,7 +56,9 @@ public class DentistVisitRepository {
             q.executeUpdate();
         }
     }
-
+    /*
+    * Search for matches in the database name fields for Dentist and Person, also personalCode for last.
+     */
     public List<DentistVisitEntity> search(String search) {
         TypedQuery<DentistVisitEntity> query = em.createQuery(
                 "SELECT dve from DentistVisitEntity dve " +

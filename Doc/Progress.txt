@@ -47,3 +47,14 @@ ringi kolades leidsin kudas saab ka osalisi vasteid leida. Nüüd saab otsida ka
 liiga keeruline just andmebaasi ja thymeleafi koha pealt. Teeksin seda muidu nii, et lisaksin igale ajale 30 minutit
 või kui iganes kaua ma otsustan, et arstivastuvõtt kestab ja siis lihtsalt uusi aega postitades kontrolliksin kas uus aeg
 läheb kuhugi olemasolevate vahemike sisse ja kui läheb siis ei luba esitada.
+
+DAY 8. (conclusion)
+1) Veidi parandasin stiili, lisasin kommentaare koodi, et miks midagi just nii tegin.
+2) Väga huvitav oli seda rakendust teha, kuna varem olin sarnast asja üles ehitanud C#is Asp.net core'iga.
+Javas on üldised mustrid samad aga kohati funktsionaalsuse realisatsioonid erinevad muidugi. Backendi asjadega olin enam-vähem
+sina peal või kui ei teadnud siis oskasin otsida, samas frontend, just Thymeleaf oli veidi keeruline. Viimase puhul võttis
+kauem, et aru saada, kuidas midagi teha ja kohati muutus takistuseks aegunud vormingute kasutamine (java.util.Date peamiselt).
+Nimelt saab vaid seda mallis kasutada nii et selle vormingut oleks võimalik seal muuta. Backendis, kui Date objektile
+IDEs . taha panna (kuvatakse automaatselt pakkumisi, et mis funktsiooni rakendada tahad), siis enamus olid depricated.
+Kogu selle ja muu keerukuse tõttu otsustasin visiidi aja kontrolli mitte süveneda. See kuidas tõlkeid siin tehakse oli mugav.
+Kokkuvõtteks oli huvitav näha/õppida, kuidas Javas ja Spring Bootis asjad käivad :D

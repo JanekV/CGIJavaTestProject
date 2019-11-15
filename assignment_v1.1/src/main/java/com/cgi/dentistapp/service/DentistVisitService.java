@@ -21,26 +21,23 @@ public class DentistVisitService {
 
     private final DentistRepository dentistRepository;
 
-    private final PersonRepository personRepository;
-
-    public DentistVisitService(DentistVisitRepository dentistVisitRepository, DentistRepository dentistRepository, PersonRepository personRepository) {
+    public DentistVisitService(DentistVisitRepository dentistVisitRepository, DentistRepository dentistRepository) {
         this.dentistVisitRepository = dentistVisitRepository;
         this.dentistRepository = dentistRepository;
-        this.personRepository = personRepository;
     }
-
+    // Returning added value, may be needed to know it's generated id later.
     public DentistVisitDTO addVisit(DentistVisitDTO dto) {
         PersonEntity personEntity = new PersonEntity(dto.getPersonId(),
                 dto.getPersonFirstName(), dto.getPersonLastName(),
                 dto.getPersonPersonalCode());
-        return DentistVisitMapper.MapToDTO(
+        return DentistVisitMapper.mapToDTO(
                 dentistVisitRepository.addVisit(
-                        DentistVisitMapper.MapToEntity(dto, dentistRepository.findById(dto.getDentistId()), personEntity)));
+                        DentistVisitMapper.mapToEntity(dto, dentistRepository.findById(dto.getDentistId()), personEntity)));
     }
 
     public List<DentistVisitDTO> getAll() {
         return dentistVisitRepository.getAll()
-                .stream().map(DentistVisitMapper::MapToDTO)
+                .stream().map(DentistVisitMapper::mapToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +46,7 @@ public class DentistVisitService {
     }
 
     public DentistVisitDTO findById(Long id) {
-        return DentistVisitMapper.MapToDTO(
+        return DentistVisitMapper.mapToDTO(
                 dentistVisitRepository.findById(id));
     }
 
@@ -59,7 +56,7 @@ public class DentistVisitService {
 
     public List<DentistVisitDTO> search(String key) {
         return dentistVisitRepository.search(key)
-                .stream().map(DentistVisitMapper::MapToDTO)
+                .stream().map(DentistVisitMapper::mapToDTO)
                 .collect(Collectors.toList());
     }
 }

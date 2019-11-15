@@ -8,10 +8,10 @@ import com.cgi.dentistapp.entity.PersonEntity;
 
 public class DentistVisitMapper {
 
-    public static DentistVisitDTO MapToDTO(DentistVisitEntity entity) {
+    public static DentistVisitDTO mapToDTO(DentistVisitEntity entity) {
         PersonEntity p = entity.getPerson();
         return new DentistVisitDTO(
-                entity.getId(),
+                entity.getId(), // Important to preserve Ids in order to later see whether to update or add entity in the db.
                 entity.getDentist().getId(),
                 entity.getPerson().getId(),
                 entity.getDentist().getFirstName() + " " + entity.getDentist().getLastName(),
@@ -20,9 +20,9 @@ public class DentistVisitMapper {
                 entity.getVisitDate(), entity.getVisitTime());
     }
 
-    public static DentistVisitEntity MapToEntity(DentistVisitDTO dto, DentistEntity dentist, PersonEntity personEntity) {
+    public static DentistVisitEntity mapToEntity(DentistVisitDTO dto, DentistEntity dentist, PersonEntity personEntity) {
         return new DentistVisitEntity(dto.getId(), dentist, personEntity, dto.getVisitDate(), dto.getVisitTime());
-    }
+    } // Important to preserve Ids in order to later see whether to update or add entity in the db.
 
 
 }

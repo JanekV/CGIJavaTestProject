@@ -39,6 +39,7 @@ public class PersonEntity {
     @OneToMany(mappedBy = "person")
     private List<DentistVisitEntity> visits;
 
+    // Separate constructor is needed because visits fields is never manually used to create object.
     public PersonEntity(Long id, String personFirstName, String personLastName, String personPersonalCode) {
         this.id = id;
         this.firstName = personFirstName;

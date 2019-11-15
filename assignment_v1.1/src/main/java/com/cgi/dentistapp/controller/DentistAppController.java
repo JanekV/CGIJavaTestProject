@@ -40,7 +40,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     public String postRegisterForm(@Valid DentistVisitDTO dentistVisitDTO,
                                    BindingResult bindingResult, Model model, RedirectAttributes ra) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("dentists", dentistVisitService.getAllDentists());
+            model.addAttribute("dentists", dentistVisitService.getAllDentists()); // Need to fetch all dentists for the dropdown again.
             return "form";
         }
         dentistVisitService.addVisit(dentistVisitDTO);
@@ -58,7 +58,6 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @GetMapping("/results/search")
     public String search(@RequestParam(defaultValue = "") String key, Model model) {
         model.addAttribute("Results", "True");
-        System.out.println("key: " + key);
         model.addAttribute("dentistVisits", dentistVisitService.search(key));
         return "results";
     }
@@ -75,6 +74,9 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
         return showList(model);
     }
 
+    /*
+    * Find entity to edit -> give entity to form view.
+    * */
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
         model.addAttribute("dentists", dentistVisitService.getAllDentists());
