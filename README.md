@@ -5,3 +5,6 @@ Project uses Lombok, to set it up follow the guide at https://www.baeldung.com/l
 
 To run application, once lombok is setup and all maven dependencies are downloaded,
 simply run DentistAppApplication.java in src/main/java/com.cgi.dentistapp.
+
+
+(Progress, in which order what was done/comments can be found in Doc/Progress.txt)
